@@ -2,9 +2,17 @@
 import React from "https://dev.jspm.io/react/index.js";
 // @deno-types="https://servestjs.org/@/types/react-dom/server/index.d.ts"
 import ReactDOMServer from "https://dev.jspm.io/react-dom/server.js";
-import {createRouter } from "https://servestjs.org/@/mod.ts";
+import { createRouter } from "https://servestjs.org/@/mod.ts";
 
-function IndexRoutes(){
+const App: React.FC = () => {
+  return (
+    <div className="App">
+      <p>ハロー React!!</p>
+    </div>
+  );
+};
+
+function IndexRoutes() {
   const router = createRouter();
   router.handle("/", async (req) => {
     await req.respond({
@@ -19,6 +27,7 @@ function IndexRoutes(){
             <title>servest</title>
           </head>
           <body>Hello Servest!</body>
+          <App />
         </html>,
       ),
     });
@@ -28,5 +37,5 @@ function IndexRoutes(){
 }
 
 export default {
-  IndexRoutes
-}
+  IndexRoutes,
+};
